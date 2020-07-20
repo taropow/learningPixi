@@ -5,6 +5,8 @@ A step-by-step introduction to making games and interactive media with
 the [Pixi rendering engine](https://github.com/pixijs/pixi.js). **[Updated for Pixi v4.5.5](https://github.com/pixijs/pixi.js/releases/tag/v4.5.5)**. [Chinese version here: Pixi官方教程中文版](https://github.com/Zainking/learningPixi). If you like this
 tutorial, [you'll love the book, which contains 80% more content!](http://www.springer.com/us/book/9781484210956).
 
+Pixiレンダリングエンジンでゲームやインタラクティブメディアを作成するためのステップバイステップの紹介。Pixi v4.5.5用に更新されました。中国語版はこちら：Pixi官方教程中文版。このチュートリアルが気に入ったら、80％以上のコンテンツが含まれるこの本を気に入るはずです。。
+
 ### Table of contents
 1. [Introduction](#introduction)
 2. [Setting up](#settingup)
@@ -81,6 +83,8 @@ importantly, Pixi gets out of your way so that you can use as much or
 as little of it as you want to, adapt it to your personal coding
 style, and integrate it seamlessly with other useful frameworks.
 
+Pixiは非常に高速な2Dスプライトレンダリングエンジンです。どういう意味ですか？つまり、JavaScriptやその他のHTML5テクノロジーを使用してゲームやアプリケーションを簡単に作成できるように、インタラクティブなグラフィックを表示、アニメーション化、管理するのに役立ちます。賢明で整理されたAPIがあり、テクスチャアトラスのサポートや、スプライト（インタラクティブイメージ）のアニメーション化のための合理化されたシステムの提供など、多くの便利な機能が含まれています。また、完全なシーングラフも提供されるため、ネストされたスプライト（スプライト内のスプライト）の階層を作成したり、マウスやタッチイベントをスプライトに直接接続したりできます。そして、最も重要なのは、Pixiが邪魔にならないようにして、好きなだけ、または少しだけ使用して、個人のコーディングスタイルに適合させ、他の有用なフレームワークとシームレスに統合できるようにすることです。
+
 Pixi’s API is actually a refinement of a well-worn and battle-tested
 API pioneered by Macromedia/Adobe Flash. Old-skool Flash developers
 will feel right at home. Other current sprite rendering frameworks use
@@ -88,24 +92,34 @@ a similar API: CreateJS, Starling, Sparrow and Apple’s SpriteKit. The
 strength of Pixi’s API is that it’s general-purpose: it’s not a game
 engine. That’s good because it gives you total expressive freedom to make anything you like, and wrap your own custom game engine around it.
 
+PixiのAPIは、実際には、Macromedia / Adob​​e Flashによって開拓された、使い古された、十分にテストされたAPIの改良版です。昔ながらのFlash開発者は、くつろいでいます。他の現在のスプライトレンダリングフレームワークは、同様のAPIを使用しています：CreateJS、Starling、Sparrow、およびAppleのSpriteKit。PixiのAPIの強みは、それが汎用であることです。これはゲームエンジンではありません。それはあなたがあなたが好きなものを作る表現力の自由をあなたに与え、あなた自身のカスタムゲームエンジンをそれに包むので、それは良いことです。
+
 In this tutorial you’re going to find out how to combine Pixi’s
 powerful image rendering features and scene graph to start making
 games. But Pixi isn't just for games - you can use these same
 techniques to create any interactive media applications. That means
 apps for phones!
 
+このチュートリアルでは、Pixiの強力な画像レンダリング機能とシーングラフを組み合わせてゲームの作成を開始する方法を説明します。ただし、Pixiはゲームだけではありません。これらの同じ手法を使用して、インタラクティブメディアアプリケーションを作成できます。それは電話用アプリを意味します！
+
 What do you need to know before you get started with this tutorial?
+
+このチュートリアルを始める前に知っておくべきことは何ですか？
 
 You should have a reasonable understanding of HTML and
 JavaScript. You don't have to be an expert, just an ambitious beginner
 with an eagerness to learn. If you don't know HTML and JavaScript, the
 best place to start learning it is this book:
 
+HTMLとJavaScriptを十分に理解している必要があります。専門家である必要はなく、学習意欲のある野心的な初心者です。HTMLとJavaScriptがわからない場合は、次の本を読んで学習してください。
+
 [Foundation Game Design with HTML5 and JavaScript](http://www.apress.com/9781430247166)
 
 I know for a fact that it's the best book, because I wrote it!
-
 There are also some good internet resources to help get you started:
+
+私が書いたので、私はそれが最高の本であることを知っています！
+あなたが始めるのに役立ついくつかの良いインターネットリソースもあります：
 
 [Khan Academy: Computer
 Programming](http://www.khanacademy.org/computing/cs)
@@ -114,12 +128,15 @@ Programming](http://www.khanacademy.org/computing/cs)
 JavaScript](http://www.codecademy.com/tracks/javascript)
 
 Choose whichever best suits your learning style.
+学習スタイルに最適な方を選択してください。
 
 Ok, got it?
 Do you know what JavaScript variables, functions, arrays and objects are and how to
 use them? Do you know what [JSON data
 files](http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/)
 are? Have you used the [Canvas Drawing API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_graphics_with_canvas)?
+
+はい、わかった？JavaScriptの変数、関数、配列、オブジェクトとは何か、それらの使用方法を知っていますか？JSONデータファイル が何か知っていますか？Canvas Drawing APIを使用しましたか？
 
 To use Pixi, you'll also need to run a webserver in your root project
 directory. Do you know what a webserver is and
@@ -134,8 +151,12 @@ video](https://www.youtube.com/watch?v=INk0ATBbclc). You should learn
 how to use Unix - it only takes a couple of hours to learn and is a
 really fun and easy way to interact with your computer.
 
+Pixiを使用するには、ルートプロジェクトディレクトリでウェブサーバーを実行する必要もあります。Webサーバーとは何か、プロジェクトフォルダーでWebサーバーを起動する方法を知っていますか？最良の方法は、node.jsを使用して から、非常に使いやすいhttp-serverをインストールすること です。ただし、それを行う場合は、Unixコマンドラインを快適に操作できる必要があります。このビデオ では、Unixの使用方法を学ぶことができます。終了したら、このビデオに従ってください。あなたはUnixの使い方を学ぶべきです-学ぶのにほんの数時間しかかかりません、そしてあなたのコンピュータと対話するための本当に楽しくて簡単な方法です。
+
 But if you don't want to mess around with the command line just yet, try the Mongoose
 webserver:
+
+しかし、まだコマンドラインをいじりたくない場合は、Mongoose Webサーバーを試してください。
 
 [Mongoose](http://cesanta.com/mongoose.shtml)
 
@@ -143,6 +164,12 @@ Or, just write all your code using the excellent [Brackets text
 editor](http://brackets.io). Brackets automatically launches a webserver
 and browser for you when you click the lightning bolt button in its
 main workspace.
+
+または、優れたBracketsテキストエディタを使用してすべてのコードを記述します。Bracketsは、メインワークスペースで稲妻ボタンをクリックすると、自動的にWebサーバーとブラウザーを起動します。
+
+準備ができたと思ったら、読み続けてください！
+
+（読者へのリクエスト：これは最新のドキュメントです。特定の詳細について質問がある場合、または内容の明確化が必要な場合は、このGitHubリポジトリに問題を作成してください。詳細をテキストで更新します。）
 
 Now if you think you're ready, read on!
 
